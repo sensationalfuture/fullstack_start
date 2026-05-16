@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+.button {
+  @apply hover:bg-sky-200 text-white font-bold py-2 px-4 rounded;
+}
+
+#calculator {
+  @apply grid grid-rows-5;
+}
+
+#calc_display {
+  @apply box-border border-2 border-bs-gray-700 p-4 mb-4 text-right text-xl;
+}
+
+#title {
+  @apply text-3xl font-bold mb-4;
+}
