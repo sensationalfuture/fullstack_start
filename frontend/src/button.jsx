@@ -32,6 +32,9 @@ function Button({ variant = "primary", number = "0", onClick }) {
     clear: {
       symbol: "Clear",
     },
+    negate: {
+      symbol: "+/-",
+    },
   };
   const buttonSymbol = buttonStyle[variant].symbol;
 
