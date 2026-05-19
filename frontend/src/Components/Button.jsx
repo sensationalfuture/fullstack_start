@@ -1,4 +1,4 @@
-import "./App.css";
+import "../App.jsx";
 
 function Button({ variant = "primary", number = "0", onClick }) {
   const buttonStyle = {
