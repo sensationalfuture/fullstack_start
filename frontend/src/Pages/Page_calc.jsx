@@ -111,7 +111,9 @@ export default function Page_calc() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold text-white mb-4">Calculator</h1>
+      <h1 className="font-light text-3xl text-white bg-sky-500 font-serif ">
+        Calculator
+      </h1>
       <Calc_display value={displayVal} />
       <div className="flex flex-col items-center justify-center min-h-auto bg-gray-1000">
         <div className="grid grid-cols-4 gap-2 mt-4">
@@ -151,7 +153,7 @@ export default function Page_calc() {
         </div>
 
         <div className="mt-4 bg-black rounded p-2">
-          <p className="text-sky-100 text-xl">Made by Durjoy Sen</p>
+          <p className="text-sky-100 text-xl font-light">Made by Durjoy Sen</p>
         </div>
       </div>
     </>

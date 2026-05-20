@@ -41,7 +41,7 @@ function Button({ variant = "primary", number = "0", onClick }) {
 
   return (
     <button
-      class="hover:bg-sky-500 text-white font-bold py-2 px-20 rounded outline flex justify-center items-center"
+      class="hover:bg-sky-500 text-white font-bold py-2 px-20 outline rounded flex justify-center items-center"
       onClick={() => onClick(buttonSymbol)}
     >
       {buttonSymbol}

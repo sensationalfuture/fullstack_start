@@ -3,7 +3,7 @@ import "./Navbar.css";
 
 export default function Navbar() {
   return (
-    <nav class="flex items-center bg-white px-4 py-2">
+    <nav class="flex items-center bg-rose-500 px-4 py-2">
       <Link to="/" className="header">
         Home
       </Link>
