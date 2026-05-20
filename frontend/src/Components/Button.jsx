@@ -40,7 +40,10 @@ function Button({ variant = "primary", number = "0", onClick }) {
 
 
   return (
-    <button className="button" onClick={() => onClick(buttonSymbol)}>
+    <button
+      class="hover:bg-sky-500 text-white font-bold py-2 px-20 rounded outline flex justify-center items-center"
+      onClick={() => onClick(buttonSymbol)}
+    >
       {buttonSymbol}
     </button>
   );
