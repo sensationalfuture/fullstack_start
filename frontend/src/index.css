@@ -36,8 +36,8 @@
   :root {
     --text: #9ca3af;
     --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
+    --bg: #000000;
+    --border: #13205d;
     --code-bg: #1f2028;
     --accent: #c084fc;
     --accent-bg: rgba(192, 132, 252, 0.15);
@@ -57,7 +57,7 @@ body {
 }
 
 #root {
-  width: 1126px;
+  width: auto;
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
@@ -72,7 +72,6 @@ h1,
 h2 {
   font-family: var(--heading);
   font-weight: 500;
-  color: var(--text-h);
 }
 
 h1 {

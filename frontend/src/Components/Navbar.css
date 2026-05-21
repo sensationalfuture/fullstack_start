@@ -1,1 +1,5 @@
 @import 'tailwindcss';
+
+.header {
+    @apply bg-sky-100 hover:bg-sky-500 rounded text-black p-4 m-3 float-left justify-center;
+}

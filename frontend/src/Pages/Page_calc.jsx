@@ -111,11 +111,9 @@ export default function Page_calc() {
 
   return (
     <>
-      <h1 className="font-light text-3xl text-white bg-sky-500 font-serif ">
-        Calculator
-      </h1>
+      <h1 className="font-light text-3xl text-blue-500 font-serif ">Calculator</h1>
       <Calc_display value={displayVal} />
-      <div className="flex flex-col items-center justify-center min-h-auto bg-gray-1000">
+      <div className="flex flex-col items-center justify-center min-h-auto bg-gray-1000 min-w-fit">
         <div className="grid grid-cols-4 gap-2 mt-4">
           {/* Row 1 - clear, backspace, negate, divide */}
           <Button variant="clear" onClick={clearClick} />
