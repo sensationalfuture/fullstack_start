@@ -6,20 +6,20 @@ export default function Navbar() {
     <>
       <nav className="flex bg-white px-4 py-2 items-center">
         <ul className="bg-white p-2 float-end flex items-center">
-            <li>
-              <Link to="/blackhole">
-                <img src="/src/assets/blackhole.png" className="h-20 w-30" />
-              </Link>
-            </li>
           <li>
-            <Link to="/home" className="header">
-              Home
+            <Link to="/blackhole">
+              <img src="/src/assets/blackhole.png" className="h-20 w-30" />
+            </Link>
+          </li>
+          <li>
+            <Link to="/" className="header">
+              Calculator
             </Link>
           </li>
 
           <li>
-            <Link to="/about" className="header">
-              About
+            <Link to="/weather" className="header">
+              Weather
             </Link>
           </li>
           <li>

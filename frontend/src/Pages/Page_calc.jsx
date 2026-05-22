@@ -1,4 +1,4 @@
-import {useState} from "react"
+import { useState } from "react";
 import Button from "../Components/Button.jsx";
 import Calc_display from "../Components/Display.jsx"
 import "./Page_calc.css";
