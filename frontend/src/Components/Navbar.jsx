@@ -8,7 +8,7 @@ export default function Navbar() {
         <ul className="bg-white p-2 float-end flex items-center">
           <li>
             <Link to="/blackhole">
-              <img src="/src/assets/blackhole.png" className="h-20 w-30" />
+              <img src="/src/assets/blackhole.png" className="h-20 w-30 flex " />
             </Link>
           </li>
           <li>

@@ -1,6 +1,11 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+const cors = require("cors");
+
+app.use(cors({
+  origin: ["http://localhost:5173"]
+}))
 
 app.get("/", (req, res) => {
   res.send("hello world");
@@ -56,4 +61,9 @@ app.get("/weather/:id", (req, res) => {
 
 app.listen(port, () => {
   console.log("Hello World!!!!");
+});
+
+
+app.get("/message", (req, res) => {
+  res.json({ message: "YOOOO" });
 });
