@@ -65,5 +65,10 @@ app.listen(port, () => {
 
 
 app.get("/message", (req, res) => {
-  res.json({ message: "YOOOO" });
+  res.json({ message: "This is completed and a test" });
+});
+
+app.get("https://dataservice.accuweather.com/currentconditions/v1/:locationKey", (req, res) => {
+  const locationKey = req.params.locationKey;
+  
 });
