@@ -21,14 +21,29 @@ format for API weather response.
 we expect temp to be like this: 18.6
 we expect date to be like this: '2026-06-05'
 */
-export default function WeatherTempBlip({temperature, date, id}) {
+export default function WeatherTempBlip({weatherData,id}) {
+  const c_to_f = (c) => (c * 9) / 5 + 32;
+  const highTemp = c_to_f(weatherData.daily?.temperature_2m_max[id]).toFixed(1);
+  const lowTemp = c_to_f(weatherData.daily?.temperature_2m_min[id]).toFixed(1);
+  const averageTemp = ((parseFloat(highTemp) + parseFloat(lowTemp)) / 2).toFixed(1);
+  let bg_color = "bg-sky-300";
+  if (!weatherData.daily) {
+    return
+  }
+  if (id===0) {
+    bg_color = "bg-rose-300";
+  } 
+
     return (
       <>
-        <div>
-          <p>{date}</p>
-          <p>{temperature}</p>
-          <p>Highest Temperature: weatherData.daily?.temperature_2m_max[id]</p>
-          <p>Lowest Temperature: weatherData.daily?.temperature_2m_min[id]</p>
+        <div className={`${bg_color} rounded-lg mt-4 items-center p-1 flex-auto`}>
+          {id === 0 && (
+            <p className="text-xl font-bold text-rose-500">Tommorow's Date</p>
+          )}
+          <p>{weatherData.daily?.time[id]}</p>
+          <p className="font-bold">Average: {averageTemp}°F</p>
+          <p>Highest: {highTemp}°F</p>
+          <p>Lowest: {lowTemp}°F</p>
         </div>
       </>
     );

@@ -23,8 +23,8 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link to="/contact" className="header">
-              Contact
+            <Link to="/tictactoe" className="header">
+              Tic Tac Toe
             </Link>
           </li>
           <li>

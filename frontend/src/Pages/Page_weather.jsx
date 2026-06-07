@@ -55,7 +55,7 @@ export default function Weather() {
   return (
     <>
       <form>
-        <div className="bg-blue-400 rounded-lg p-4">
+        <div className="bg-blue-400 rounded-lg p-4 ">
           <label className="text-blue-900 font-mono" htmlFor="location">
             Enter Location:
           </label>
@@ -76,12 +76,20 @@ export default function Weather() {
         </div>
       </form>
       <div>
-        <h1>{location}</h1>
+        <h1 className="text-2xl font-bold text-sky-500">{location}</h1>
         <p className="text-green-400">Latitude: {coordinates.latitude}</p>
         <p className="text-green-400">Longitude: {coordinates.longitude}</p>
         <div className="bg-sky-400 rounded-lg p-4 mt-4">
           <h2 className="font-bold text-yellow-400">7-Day Forecast</h2>
-          <WeatherBlip temperature={weatherData.daily?.temperature_2m_max[0]} date="Tomorrow" />
+          <div className="flex flex-row gap-4 overflow-x-auto">
+            <WeatherBlip weatherData={weatherData} id={0} />
+            <WeatherBlip weatherData={weatherData} id={1} />
+            <WeatherBlip weatherData={weatherData} id={2} />
+            <WeatherBlip weatherData={weatherData} id={3} />
+            <WeatherBlip weatherData={weatherData} id={4} />
+            <WeatherBlip weatherData={weatherData} id={5} />
+            <WeatherBlip weatherData={weatherData} id={6} />
+          </div>
         </div>
       </div>
     </>
