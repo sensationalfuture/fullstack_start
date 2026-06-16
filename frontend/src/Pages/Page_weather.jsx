@@ -1,55 +1,27 @@
 import { useState, useEffect } from "react";
 import "./Page_weather.css";
-import WeatherBlip from "../Components/WeatherTempBlip.jsx";
+import WeatherBlips from "../Components/WeatherBlips.jsx";
 
 export default function Weather() {
-  const [location, setLocation] = useState(""); // needed from getting input -> achieve geolocation of weather
-  const [coordinates, setCoordinates] = useState({
-    latitude: 0,
-    longitude: 0,
-  });
-  const [weatherData, setWeatherData] = useState([]); // needed to store that data from server
-  const [search, setSearch] = useState(0);
+  const [weatherData, setWeatherData] = useState({}); // data of both coords and weather.
+  const [location, setLocation] = useState(""); // location state to store the user input for location.
+  const [search, setSearch] = useState(0); // requred to trigger useEffect when we click submit button.
 
   // useEffect
   useEffect(() => {
     // fetch data fron server, anythime we change the location;
-    fetch(
-      `https://geocoding-api.open-meteo.com/v1/search?name=${location}&count=1`,
-    )
-      .then((response) => response.json())
-      // edit later this WILL NOT WORK with given API.
-      .then((data) => {
-        if (!data.results || data.results.length === 0) {
-          console.log("No results found for " + location);
-          return;
-        }
-
-        const lat = data.results[0].latitude;
-        const lon = data.results[0].longitude;
-
-        setCoordinates({
-          latitude: lat,
-          longitude: lon,
-        });
-        return fetch(
-          `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min&timezone=auto`,
-        );
-      })
+    if (!location) return; // if location is empty, do not fetch data.
+    fetch(`http://localhost:3000/api/v1/weather/location?location=${location}`)
       .then((response) => response.json())
       .then((data) => {
+        // SUCCESS RESPONSE FROM SERVER
         setWeatherData(data);
-        console.log("Weather data fetched successfully:", data);
-      })
-      .catch((error) =>
-        console.log(
-          "There was an error fetching the geolocation data:",
-          error,
-          coordinates,
-          location,
-          weatherData,
-        ),
-      );
+        if (data.status === "error") {
+          console.log("Error fetching weather data:", data.message);
+        } else {
+          console.log("Weather data fetched successfully:", data);
+        }
+      });
   }, [search]);
 
   return (
@@ -77,19 +49,25 @@ export default function Weather() {
       </form>
       <div>
         <h1 className="text-2xl font-bold text-sky-500">{location}</h1>
-        <p className="text-green-400">Latitude: {coordinates.latitude}</p>
-        <p className="text-green-400">Longitude: {coordinates.longitude}</p>
+        <p className="text-green-400">
+          Latitude:{" "}
+          {weatherData.status === "success"
+            ? weatherData.location?.latitude
+            : "N/A"}
+        </p>
+        <p className="text-green-400">
+          Longitude:{" "}
+          {weatherData.status === "success"
+            ? weatherData.location?.longitude
+            : "N/A"}
+        </p>
         <div className="bg-sky-400 rounded-lg p-4 mt-4">
           <h2 className="font-bold text-yellow-400">7-Day Forecast</h2>
-          <div className="flex flex-row gap-4 overflow-x-auto">
-            <WeatherBlip weatherData={weatherData} id={0} />
-            <WeatherBlip weatherData={weatherData} id={1} />
-            <WeatherBlip weatherData={weatherData} id={2} />
-            <WeatherBlip weatherData={weatherData} id={3} />
-            <WeatherBlip weatherData={weatherData} id={4} />
-            <WeatherBlip weatherData={weatherData} id={5} />
-            <WeatherBlip weatherData={weatherData} id={6} />
-          </div>
+          {weatherData.status === "success" ? (
+            <WeatherBlips weatherData={weatherData} />
+          ) : (
+            <h1 className="text-amber-500">Data Not Entered</h1>
+          )}
         </div>
       </div>
     </>
